@@ -44,4 +44,4 @@ Orchestrated via `stats_runner.py`. Reads parquets from `kr_forensic_core.paths.
 | Gap | Why | Status |
 |-----|-----|--------|
 | Only 5 tests for 14 analysis scripts | Scripts require parquet inputs not available in CI | Deferred — need fixture parquets |
-| `survival_repricing.py` not validated against known fraud cases | Needs labeled enforcement dataset integration | Unblocked |
+| `survival_repricing.py` not validated against known fraud cases | Needs labeled enforcement dataset integration + SEIBRO repricing data (blocked by XB-002) | Blocked — SEIBRO API ETA end of April 2026 |
