@@ -39,15 +39,28 @@ try:
     _PROCESSED_DIR = _data_dir(repo_root=pathlib.Path(__file__).resolve().parents[1])
 except Exception:
     _PROCESSED_DIR = pathlib.Path(__file__).resolve().parents[1] / "01_Data" / "processed"
-ROOT = _PROCESSED_DIR.parent.parent
-sys.path.insert(0, str(ROOT / "02_Pipeline"))
-from _pipeline_helpers import parse_amount as _parse_amount  # noqa: E402
+_ROOT = _PROCESSED_DIR.parent.parent
 
 log = logging.getLogger(__name__)
-PROCESSED = ROOT / "01_Data" / "processed"
-RAW_FIN = ROOT / "01_Data" / "raw" / "financials"
-OUTPUT_DIR = ROOT / "03_Analysis" / "statistical_tests" / "outputs"
-REF_DIR = ROOT / "00_Reference"
+PROCESSED = _PROCESSED_DIR
+RAW_FIN = _PROCESSED_DIR.parent / "raw" / "financials"
+OUTPUT_DIR = _ROOT / "03_Analysis" / "statistical_tests" / "outputs"
+REF_DIR = _ROOT / "00_Reference"
+
+
+def _parse_amount(raw) -> float | None:
+    """Parse a DART thstrm_amount string to float. Returns None on failure."""
+    if raw is None:
+        return None
+    s = str(raw).replace(",", "").replace(" ", "").strip()
+    if not s or s in ("nan", "None", "-", ""):
+        return None
+    if s.startswith("(") and s.endswith(")"):
+        s = "-" + s[1:-1]
+    try:
+        return float(s)
+    except ValueError:
+        return None
 
 # Beneish weights for component contribution
 BENEISH_WEIGHTS = {

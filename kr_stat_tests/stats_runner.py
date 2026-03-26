@@ -30,12 +30,11 @@ def _get_project_root() -> Path:
     if env_val:
         # KRFF_DATA_DIR = .../01_Data/processed → root is 2 levels up
         return Path(env_val).parents[1]
-    # Sibling repo lookup: kr-stat-tests lives next to krff-shell/kr-forensic-finance
+    # Sibling repo lookup: kr-stat-tests lives next to krff-shell
     pkg_root = Path(__file__).resolve().parents[1]  # kr-stat-tests/
-    for sibling in ("krff-shell", "kr-forensic-finance"):
-        candidate = pkg_root.parent / sibling / "01_Data" / "processed"
-        if candidate.exists():
-            return pkg_root.parent / sibling
+    candidate = pkg_root.parent / "krff-shell" / "01_Data" / "processed"
+    if candidate.exists():
+        return pkg_root.parent / "krff-shell"
     return pkg_root  # fallback
 
 
