@@ -1,0 +1,52 @@
+[project]
+name = "kr-stat-tests"
+version = "1.0.0"
+requires-python = ">=3.11"
+description = "Statistical validation suite for Korean forensic accounting methodology"
+authors = [{name = "pon00050"}]
+license = {text = "MIT"}
+readme = "README.md"
+keywords = ["forensic-accounting", "korea", "statistics", "machine-learning", "validation"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "pandas",
+    "numpy",
+    "scikit-learn>=1.4.0",
+    "statsmodels>=0.14.0",
+    "lifelines>=0.29.0",
+    "pyarrow",
+    "kr-forensic-core",
+]
+
+[project.urls]
+Repository = "https://github.com/pon00050/kr-stat-tests"
+Issues = "https://github.com/pon00050/kr-stat-tests/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["kr_stat_tests"]
+
+[tool.uv]
+compile-bytecode = false
+
+[tool.uv.sources]
+kr-forensic-core = { path = "../kr-forensic-core" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+]
