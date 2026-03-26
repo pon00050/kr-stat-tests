@@ -23,7 +23,7 @@ def _get_project_root() -> Path:
 
     Resolution order:
     1. KRFF_DATA_DIR env var → root = KRFF_DATA_DIR/../..
-    2. Look for krff-shell or kr-forensic-finance sibling of this package
+    2. Look for krff-shell sibling of this package
     3. Fall back to parent of this package (will likely produce missing-file errors)
     """
     env_val = os.environ.get("KRFF_DATA_DIR")
