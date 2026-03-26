@@ -39,7 +39,7 @@ packages = ["kr_stat_tests"]
 compile-bytecode = false
 
 [tool.uv.sources]
-kr-forensic-core = { path = "../kr-forensic-core" }
+kr-forensic-core = { path = "../kr-forensic-core", editable = true }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
