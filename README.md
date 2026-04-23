@@ -1,5 +1,7 @@
 # kr-stat-tests
 
+**[Read the full write-up →](https://ronanwrites.vercel.app/manuals/forensic-platform-architecture)**
+
 Statistical validation suite for the Korean forensic accounting methodology.
 
 14 tests: PCA, clustering, FDR, bootstrap, LASSO, random forest, survival analysis,
@@ -10,7 +12,7 @@ Part of the [forensic accounting toolkit](https://github.com/pon00050/forensic-a
 ## Install
 
 ```bash
-pip install kr-stat-tests
+uv add git+https://github.com/pon00050/kr-stat-tests
 ```
 
 ## Usage

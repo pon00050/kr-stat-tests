@@ -45,3 +45,8 @@ Orchestrated via `stats_runner.py`. Reads parquets from `kr_forensic_core.paths.
 |-----|-----|--------|
 | Only 5 tests for 14 analysis scripts | Scripts require parquet inputs not available in CI | Deferred — need fixture parquets |
 | `survival_repricing.py` not validated against known fraud cases | Needs labeled enforcement dataset integration + SEIBRO repricing data (blocked by XB-002) | Blocked — SEIBRO API ETA end of April 2026 |
+
+
+---
+
+**Domain knowledge** (regulatory analysis, buyer research, competitive intelligence, legal compliance) belongs in the hub vault: `forensic-accounting-toolkit/knowledge/`. Engineering docs (API patterns, test strategies, run logs) stay here. After creating a new domain knowledge note, copy it to the hub with gold-standard frontmatter. See hub `CLAUDE.md` §Knowledge Vault for the frontmatter contract.
